@@ -8,15 +8,15 @@ var PhoneSchema = new Schema({
   model: String,
   price: Number,
   d:{
-    wifi: boolean,
-    bluetooth: boolean,
+    wifi: Boolean,
+    bluetooth: Boolean,
     micro: String,
     ram : String,
     camera: {
       definition: Number,
-      flash: boolean,
+      flash: Boolean,
     },
-    gps: boolean,
+    gps: Boolean,
     so: String,
     keywords: [String]
   }
