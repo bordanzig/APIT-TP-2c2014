@@ -36,25 +36,17 @@ module.exports = function(app){
   router.route('/phone')
   
     .post(function(req, res){
-      var phone = new Phone();
-      phone.brand = req.body.brand;
-      phone.model = req.body.model;
-      phone.price = req.body.price;
-      phone.d.wifi = req.body.d.wifi;
-      phone.d.bluetooth = req.body.d.bluetooth;
-      phone.d.ram = req.body.d.ram;
-      phone.d.camera.definition = req.body.d.camera.definition;
-      phone.d.camera.flash = req.body.d.camera.flash;
-      phone.d.gps = req.body.d.gps;
-      phone.d.so = req.body.d.so;
-      splited = req.body.keywords.split(" ");
-      phone.d.keywords = splited;
+      var phone = new Phone(req.body);
+      if (phone.snippet) {
+        var splited = phone.snippet.split(" ");
+        phone.keywords = splited;
+      }
 
       //Save phone
       phone.save(function(err){
         if (err)
           res.send(err);
-      res.json({message: 'Phone Created'});
+        res.json({message: 'Phone Created'});
       });
     })
 

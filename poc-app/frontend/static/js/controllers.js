@@ -9,7 +9,6 @@ apitPocControllers.controller('TelefonoListCtrl', ['$scope', 'Telefono',
     $scope.filterCriteria = '';
     $scope.filterResult = function() {
         $scope.telefonos = Telefono.query({'keywords': $scope.filterCriteria});
-	console.log("llamando a filterResult() con filterCriteria: %s", $scope.filterCriteria);
     };
   }]);
 
